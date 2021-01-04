@@ -1,10 +1,15 @@
-package model;
+package deplacement.balise;
 
-public class DeplacementBalise extends Deplacement {
+import deplacement.Deplacement;
+import elements.Balise;
+import elements.ElementMobile;
+import event.SatelitteMoved;
+
+public class DeplBalise extends Deplacement {
 
 	protected Deplacement next;
 	
-	public DeplacementBalise (Deplacement next) {
+	public DeplBalise (Deplacement next) {
 		this.next = next;
 	}
 	

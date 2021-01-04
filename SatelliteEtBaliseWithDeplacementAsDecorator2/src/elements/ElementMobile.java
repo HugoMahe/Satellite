@@ -1,9 +1,12 @@
-package model;
+package elements;
 
 import java.awt.Point;
 
+import deplacement.Deplacement;
+import event.PositionChanged;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
+import model.Manager;
 
 public class ElementMobile {
 	Deplacement depl;

@@ -1,10 +1,14 @@
-package model;
+package deplacement.balise;
 
 import java.awt.Point;
 
-public class MonteSurfacePourSynchro extends DeplacementBalise {
+import deplacement.Deplacement;
+import elements.Balise;
+import elements.ElementMobile;
+
+public class DeplVersSurface extends DeplBalise {
 	
-	public MonteSurfacePourSynchro(Deplacement next) {
+	public DeplVersSurface(Deplacement next) {
 		super (next);
 	}
 		

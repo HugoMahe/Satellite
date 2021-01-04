@@ -1,6 +1,8 @@
-package model;
+package event;
 
+import deplacement.balise.DeplSynchronisation;
 import eventHandler.AbstractEvent;
+import listener.SynchroEventListener;
 
 public class SynchroEvent extends AbstractEvent {
 	private static final long serialVersionUID = 480096146703824993L;

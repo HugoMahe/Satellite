@@ -1,25 +1,30 @@
-package model;
+package deplacement.balise;
 
 import java.awt.Point;
 
-public class Redescendre extends DeplacementBalise {
+import deplacement.Deplacement;
+import elements.Balise;
+
+public class DeplRedescendre extends DeplBalise {
 	int profondeur;
-	
-	public Redescendre(Deplacement next, int profondeur) {
-		super (next);
+
+	public DeplRedescendre(Deplacement next, int profondeur) {
+		super(next);
 		this.profondeur = profondeur;
 	}
-	
+
 	@Override
 	public void bouge(Balise target) {
 		Point p = target.getPosition();
 		int y = p.y;
 		if (y < this.profondeur) {
 			y += 3;
-			if (y > this.profondeur) y = this.profondeur;
+			if (y > this.profondeur)
+				y = this.profondeur;
 			target.setPosition(new Point(p.x, y));
-		}  else {
+		} else {
 			target.setDeplacement(next);
+			target.unsync();
 		}
 	}
 

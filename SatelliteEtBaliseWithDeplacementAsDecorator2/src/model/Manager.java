@@ -2,6 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+import elements.Balise;
+import elements.Satelitte;
+import event.SatelitteMoved;
+
 public class Manager {
 	ArrayList<Satelitte> sats = new ArrayList<Satelitte>();
 	ArrayList<Balise> bals = new ArrayList<Balise>();

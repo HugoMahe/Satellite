@@ -1,8 +1,11 @@
-package model;
+package deplacement;
 
 import java.awt.Point;
 
-public class DeplHorizontal extends DeplacementBalise {
+import deplacement.balise.DeplBalise;
+import elements.ElementMobile;
+
+public class DeplHorizontal extends DeplBalise {
 	Integer start;
 	Integer end;
 	Boolean fromStartToEnd = true;

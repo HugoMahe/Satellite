@@ -1,8 +1,11 @@
-package model;
+package deplacement;
 
 import java.awt.Point;
 
-public class DeplVertical extends DeplacementBalise  {
+import deplacement.balise.DeplBalise;
+import elements.ElementMobile;
+
+public class DeplVertical extends DeplBalise  {
 	Integer min;
 	Integer max;
 	Boolean monte = false;

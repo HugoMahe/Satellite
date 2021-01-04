@@ -1,6 +1,7 @@
-package model;
+package event;
 
 import eventHandler.AbstractEvent;
+import listener.PositionChangeListener;
 
 public class PositionChanged extends AbstractEvent {
 	private static final long serialVersionUID = 480096146703824993L;

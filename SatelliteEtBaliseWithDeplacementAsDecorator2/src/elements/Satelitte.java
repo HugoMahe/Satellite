@@ -1,4 +1,6 @@
-package model;
+package elements;
+
+import event.SatelitteMoved;
 
 public class Satelitte extends ElementMobile {
 			
