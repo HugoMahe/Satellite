@@ -5,10 +5,10 @@ import deplacement.balise.DeplBalise;
 import deplacement.balise.DeplSynchronisation;
 import deplacement.balise.DeplVersSurface;
 import deplacement.balise.DeplRedescendre;
-import event.SatelitteMoved;
-import listener.SatelitteMoveListener;
+import event.SatelliteMoved;
+import listener.SatelliteMoveListener;
 
-public class Balise extends ElementMobile implements SatelitteMoveListener {
+public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	protected boolean sync;
 
@@ -47,7 +47,7 @@ public class Balise extends ElementMobile implements SatelitteMoveListener {
 	}
 
 	@Override
-	public void whenSatelitteMoved(SatelitteMoved arg) {
+	public void whenSatelitteMoved(SatelliteMoved arg) {
 		DeplBalise dp = (DeplBalise) this.depl;
 		dp.whenSatelitteMoved(arg, this);
 	}

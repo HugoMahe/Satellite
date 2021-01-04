@@ -3,7 +3,7 @@ package deplacement.balise;
 import deplacement.Deplacement;
 import elements.Balise;
 import elements.Satelitte;
-import event.SatelitteMoved;
+import event.SatelliteMoved;
 import event.SynchroEvent;
 
 public class DeplSynchronisation extends DeplBalise {
@@ -21,7 +21,7 @@ public class DeplSynchronisation extends DeplBalise {
 	}
 	
 	@Override
-	public void whenSatelitteMoved(SatelitteMoved arg, Balise target) {
+	public void whenSatelitteMoved(SatelliteMoved arg, Balise target) {
 		if (this.synchro != null) return;
 		Satelitte sat = (Satelitte) arg.getSource();
 		int satX = sat.getPosition().x;

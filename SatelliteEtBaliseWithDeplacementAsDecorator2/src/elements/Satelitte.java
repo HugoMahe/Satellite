@@ -1,6 +1,6 @@
 package elements;
 
-import event.SatelitteMoved;
+import event.SatelliteMoved;
 
 public class Satelitte extends ElementMobile {
 			
@@ -10,6 +10,6 @@ public class Satelitte extends ElementMobile {
 	
 	public void bouge () {
 		super.bouge();
-		this.send(new SatelitteMoved(this));		
+		this.send(new SatelliteMoved(this));		
 	}
 }

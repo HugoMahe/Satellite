@@ -1,17 +1,17 @@
 package event;
 
 import eventHandler.AbstractEvent;
-import listener.SatelitteMoveListener;
+import listener.SatelliteMoveListener;
 
-public class SatelitteMoved extends AbstractEvent {
+public class SatelliteMoved extends AbstractEvent {
 	private static final long serialVersionUID = 480096146703824993L;
 
-	public SatelitteMoved(Object source) {
+	public SatelliteMoved(Object source) {
 		super(source);
 	}
 
 	public void runOn(Object target) {
-		SatelitteMoveListener listener = (SatelitteMoveListener) target;
+		SatelliteMoveListener listener = (SatelliteMoveListener) target;
 		listener.whenSatelitteMoved(this);
 	}
 }

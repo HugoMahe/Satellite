@@ -3,7 +3,7 @@ package deplacement.balise;
 import deplacement.Deplacement;
 import elements.Balise;
 import elements.ElementMobile;
-import event.SatelitteMoved;
+import event.SatelliteMoved;
 
 public class DeplBalise extends Deplacement {
 
@@ -21,6 +21,6 @@ public class DeplBalise extends Deplacement {
 		this.bouge((Balise) target);
 	}
 
-	public void whenSatelitteMoved(SatelitteMoved arg, Balise target) { }
+	public void whenSatelitteMoved(SatelliteMoved arg, Balise target) { }
 
 }
