@@ -2,7 +2,7 @@ package deplacement;
 
 import java.awt.Point;
 
-import elements.ElementMobile;
+import model.ElementMobile;
 
 public class DeplSatellite extends Deplacement {
 	Integer start;

@@ -1,4 +1,4 @@
-package elements;
+package model;
 
 import event.SatelliteMoved;
 

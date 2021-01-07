@@ -3,7 +3,7 @@ package deplacement;
 import java.awt.Point;
 
 import deplacement.balise.DeplBalise;
-import elements.ElementMobile;
+import model.ElementMobile;
 
 public class DeplHorizontal extends DeplBalise {
 	Integer start;

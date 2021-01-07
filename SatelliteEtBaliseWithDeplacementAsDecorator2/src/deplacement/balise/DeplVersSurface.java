@@ -3,8 +3,8 @@ package deplacement.balise;
 import java.awt.Point;
 
 import deplacement.Deplacement;
-import elements.Balise;
-import elements.ElementMobile;
+import model.Balise;
+import model.ElementMobile;
 
 public class DeplVersSurface extends DeplBalise {
 	

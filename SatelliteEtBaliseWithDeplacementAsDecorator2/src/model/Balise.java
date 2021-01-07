@@ -1,4 +1,4 @@
-package elements;
+package model;
 
 import deplacement.Deplacement;
 import deplacement.balise.DeplBalise;

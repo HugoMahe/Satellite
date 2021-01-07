@@ -3,7 +3,7 @@ package deplacement.balise;
 import java.awt.Point;
 
 import deplacement.Deplacement;
-import elements.Balise;
+import model.Balise;
 
 public class DeplRedescendre extends DeplBalise {
 	int profondeur;

@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import elements.Balise;
-import elements.Satelitte;
 import event.SatelliteMoved;
 
 public class Manager {

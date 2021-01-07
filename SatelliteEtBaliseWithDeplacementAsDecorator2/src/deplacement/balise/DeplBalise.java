@@ -1,9 +1,9 @@
 package deplacement.balise;
 
 import deplacement.Deplacement;
-import elements.Balise;
-import elements.ElementMobile;
 import event.SatelliteMoved;
+import model.Balise;
+import model.ElementMobile;
 
 public class DeplBalise extends Deplacement {
 

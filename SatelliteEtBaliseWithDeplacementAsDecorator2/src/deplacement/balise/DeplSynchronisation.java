@@ -1,10 +1,10 @@
 package deplacement.balise;
 
 import deplacement.Deplacement;
-import elements.Balise;
-import elements.Satelitte;
 import event.SatelliteMoved;
 import event.SynchroEvent;
+import model.Balise;
+import model.Satelitte;
 
 public class DeplSynchronisation extends DeplBalise {
 	private int synchroTime;

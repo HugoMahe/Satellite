@@ -1,6 +1,6 @@
 package deplacement;
 
-import elements.ElementMobile;
+import model.ElementMobile;
 
 public abstract class Deplacement {
 	abstract public void bouge(ElementMobile target) ;

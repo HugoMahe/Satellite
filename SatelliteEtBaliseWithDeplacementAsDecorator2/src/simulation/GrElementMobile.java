@@ -7,12 +7,12 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 
-import elements.ElementMobile;
 import event.PositionChanged;
 import event.SynchroEvent;
 import graphicLayer.GRect;
 import listener.PositionChangeListener;
 import listener.SynchroEventListener;
+import model.ElementMobile;
 
 public class GrElementMobile extends GRect implements PositionChangeListener, SynchroEventListener  {
 	ElementMobile model;
