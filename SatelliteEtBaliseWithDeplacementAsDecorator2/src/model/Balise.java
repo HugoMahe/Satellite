@@ -8,7 +8,6 @@ import deplacement.balise.DeplVersSurface;
 import event.SatelliteMoved;
 import listener.SatelliteMoveListener;
 import state.StateBalise;
-import state.StateSync;
 import state.StateCollect;
 
 public class Balise extends ElementMobile implements SatelliteMoveListener {
@@ -30,9 +29,8 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	@Override
 	public void tick() {
-		this.state.handleState();
+		System.out.println(this.dataSize);
 		if (this.memoryFull()) {
-			this.setState(new StateSync());
 			Deplacement redescendre = new DeplRedescendre(this.deplacement(), this.profondeur());
 			Deplacement deplSynchro = new DeplSynchronisation(redescendre);
 			Deplacement nextDepl = new DeplVersSurface(deplSynchro);
@@ -40,6 +38,7 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 			this.resetData();
 		}
 		super.tick();
+		this.state.handleState();
 	}
 
 	@Override

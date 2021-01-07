@@ -33,17 +33,17 @@ public class ElementMobile {
 	public Deplacement deplacement() {
 		return depl;
 	}
-	
+
 	public void setManager(Manager manager) {
 		this.manager = manager;
-		
+
 	}
-	
+
 	protected void resetData() {
 		this.dataSize = 0;
 	}
 
-	protected boolean memoryFull() {
+	public boolean memoryFull() {
 		return (this.dataSize >= this.memorySize);
 	}
 

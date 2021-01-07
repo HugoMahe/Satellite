@@ -4,7 +4,6 @@ import java.awt.Point;
 
 import deplacement.Deplacement;
 import model.Balise;
-import state.StateCollect;
 
 public class DeplRedescendre extends DeplBalise {
 	int profondeur;
@@ -25,7 +24,6 @@ public class DeplRedescendre extends DeplBalise {
 			target.setPosition(new Point(p.x, y));
 		} else {
 			target.setDeplacement(next);
-			target.setState(new StateCollect(target));
 		}
 	}
 
