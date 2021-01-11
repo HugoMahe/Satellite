@@ -4,12 +4,12 @@ import java.awt.Point;
 
 import model.ElementMobile;
 
-public class DeplacementSatellite extends Deplacement {
+public class DeplSatellite extends Deplacement {
 	Integer start;
 	Integer end;
 	int vitesse;
 
-	public DeplacementSatellite(Integer start, Integer end, int vitesse) {
+	public DeplSatellite(Integer start, Integer end, int vitesse) {
 		this.start = start;
 		this.end = end;
 		this.vitesse = vitesse;

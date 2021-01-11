@@ -1,58 +1,55 @@
 package model;
 
 import deplacement.Deplacement;
-import deplacement.DeplacementBalise;
-import deplacement.DeplacementRedescendre;
-import deplacement.DeplacementSynchronisation;
-import event.SatelitteMoved;
-import deplacement.DeplacementSurfacePourSynchro;
-import modelListener.SatelitteMoveListener;
+import deplacement.balise.DeplBalise;
+import deplacement.balise.DeplRedescendre;
+import deplacement.balise.DeplSynchronisation;
+import deplacement.balise.DeplVersSurface;
+import event.SatelliteMoved;
+import listener.SatelliteMoveListener;
+import state.StateBalise;
+import state.StateCollect;
 
-public class Balise extends ElementMobile implements SatelitteMoveListener{
-	
-	private boolean synchronisation = false;
-	
+public class Balise extends ElementMobile implements SatelliteMoveListener {
+
+	protected StateBalise state;
 	public Balise(int memorySize) {
 		super(memorySize);
+		this.setState(new StateCollect(this));
 	}
-	
-	public int profondeur() { 
-		return this.getPosition().y; 
+
+	public int profondeur() {
+		return this.getPosition().y;
 	}
-	
-	protected void readSensors() {
+
+	public void readSensors() {
 		this.dataSize++;
 	}
-	
+
+	@Override
 	public void tick() {
-		if(this.profondeur()!=0 && !(this.getSynchronisation())) {
-			this.readSensors();
-		}
 		System.out.println(this.dataSize);
 		if (this.memoryFull()) {
-			this.setSynchronisation(true);
-			Deplacement redescendre = new DeplacementRedescendre(this.deplacement(), this.profondeur());
-			Deplacement deplSynchro = new DeplacementSynchronisation(redescendre);
-			Deplacement nextDepl = new DeplacementSurfacePourSynchro(deplSynchro);
+			Deplacement redescendre = new DeplRedescendre(this.deplacement(), this.profondeur());
+			Deplacement deplSynchro = new DeplSynchronisation(redescendre);
+			Deplacement nextDepl = new DeplVersSurface(deplSynchro);
 			this.setDeplacement(nextDepl);
 			this.resetData();
 		}
 		super.tick();
+		this.state.handleState();
 	}
 
 	@Override
-	public void whenSatelitteMoved(SatelitteMoved arg) {
-		DeplacementBalise dp = (DeplacementBalise) this.depl;
+	public void whenSatelitteMoved(SatelliteMoved arg) {
+		DeplBalise dp = (DeplBalise) this.depl;
 		dp.whenSatelitteMoved(arg, this);
 	}
-
-	public boolean getSynchronisation() {
-		return synchronisation;
+	
+	public void setState(StateBalise state) {
+		if (state != null) {
+			this.state = state;
+		}
 	}
-
-	public void setSynchronisation(boolean synchronisation) {
-		this.synchronisation = synchronisation;
-	}
-
 
 }

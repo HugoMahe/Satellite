@@ -1,13 +1,14 @@
-package deplacement;
+package deplacement.balise;
 
 import java.awt.Point;
 
+import deplacement.Deplacement;
 import model.Balise;
 import model.ElementMobile;
 
-public class DeplacementSurfacePourSynchro extends DeplacementBalise {
+public class DeplVersSurface extends DeplBalise {
 	
-	public DeplacementSurfacePourSynchro(Deplacement next) {
+	public DeplVersSurface(Deplacement next) {
 		super (next);
 	}
 		

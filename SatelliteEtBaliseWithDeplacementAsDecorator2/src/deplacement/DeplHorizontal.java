@@ -2,14 +2,15 @@ package deplacement;
 
 import java.awt.Point;
 
+import deplacement.balise.DeplBalise;
 import model.ElementMobile;
 
-public class DeplacementHorizontal extends DeplacementBalise {
+public class DeplHorizontal extends DeplBalise {
 	Integer start;
 	Integer end;
 	Boolean fromStartToEnd = true;
 
-	public DeplacementHorizontal(Integer start, Integer end) {
+	public DeplHorizontal(Integer start, Integer end) {
 		super (null);
 		this.start = start;
 		this.end = end;

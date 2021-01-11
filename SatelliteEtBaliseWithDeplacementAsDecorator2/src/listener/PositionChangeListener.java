@@ -1,6 +1,6 @@
-package modelListener;
+package listener;
 
-import model.PositionChanged;
+import event.PositionChanged;
 
 public interface PositionChangeListener {
 	public void whenPositionChanged(PositionChanged arg);

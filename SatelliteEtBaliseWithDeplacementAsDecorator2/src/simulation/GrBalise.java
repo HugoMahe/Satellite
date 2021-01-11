@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import graphicLayer.GImage;
-import model.PositionChanged;
+import event.PositionChanged;
 
 public class GrBalise extends GrElementMobile {
 	public GrDescription descriptionBalise;
@@ -23,11 +23,13 @@ public class GrBalise extends GrElementMobile {
 			e.printStackTrace();
 		}
 		this.addElement(new GImage(rawImage));
-		this.setDimension(new Dimension(rawImage.getWidth()+300, rawImage.getHeight()+300));
+		this.setDimension(new Dimension(rawImage.getWidth()+50, rawImage.getHeight()+50));
 	}
 	
+	@Override
 	public void whenPositionChanged(PositionChanged arg) {
 		super.whenPositionChanged(arg);
+		System.out.println("ici");
 		descriptionBalise.refresh();
 	}
 

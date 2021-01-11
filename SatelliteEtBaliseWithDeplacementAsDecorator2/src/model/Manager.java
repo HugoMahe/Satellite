@@ -1,8 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-
-import event.SatelitteMoved;
+import event.SatelliteMoved;
 
 public class Manager {
 	ArrayList<Satelitte> sats = new ArrayList<Satelitte>();
@@ -26,13 +25,12 @@ public class Manager {
 	
 	public void baliseReadyForSynchro(Balise b) {
 		for (Satelitte s : this.sats) {			
-			s.registerListener(SatelitteMoved.class, b);
+			s.registerListener(SatelliteMoved.class, b);
 		}
 	}
 	public void baliseSynchroDone(Balise b) {
 		for (Satelitte s : this.sats) {			
-			s.unregisterListener(SatelitteMoved.class, b);
-			b.setSynchronisation(false);
+			s.unregisterListener(SatelliteMoved.class, b);
 		}
 	}
 

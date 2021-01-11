@@ -1,4 +1,4 @@
-package modelListener;
+package listener;
 
 import event.SynchroEvent;
 

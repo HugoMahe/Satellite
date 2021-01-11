@@ -7,12 +7,12 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 
+import event.PositionChanged;
 import event.SynchroEvent;
 import graphicLayer.GRect;
+import listener.PositionChangeListener;
+import listener.SynchroEventListener;
 import model.ElementMobile;
-import model.PositionChanged;
-import modelListener.PositionChangeListener;
-import modelListener.SynchroEventListener;
 
 public class GrElementMobile extends GRect implements PositionChangeListener, SynchroEventListener  {
 	ElementMobile model;
@@ -54,8 +54,9 @@ public class GrElementMobile extends GRect implements PositionChangeListener, Sy
 			Rectangle bounds = this.getBounds();
 			g.setColor(Color.ORANGE);
 			g.setStroke(new BasicStroke(2));
+			System.out.println("ici draw synchro");
 			for (int i = 10; i < 150; i += 25) {
-				g.drawOval(bounds.x-i,bounds.y-i,bounds.width+i+i,bounds.height+i+i);
+				g.drawOval(bounds.x-i-20,bounds.y-i,bounds.width+i+i,bounds.height+i+i);
 			}
 			g.setStroke(s);
 			g.setColor(c);

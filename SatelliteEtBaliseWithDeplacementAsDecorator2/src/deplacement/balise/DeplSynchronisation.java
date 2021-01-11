@@ -1,27 +1,29 @@
-package deplacement;
+package deplacement.balise;
 
-import event.SatelitteMoved;
+import deplacement.Deplacement;
+import event.SatelliteMoved;
 import event.SynchroEvent;
 import model.Balise;
 import model.Satelitte;
 
-public class DeplacementSynchronisation extends DeplacementBalise {
+public class DeplSynchronisation extends DeplBalise {
 	private int synchroTime;
 	private Satelitte synchro;
-	
+
 	public Boolean synchroStarted() {
 		return this.synchro != null;
 	}
-	
-	public DeplacementSynchronisation(Deplacement next) {
+
+	public DeplSynchronisation(Deplacement next) {
 		super(next);
 		this.synchroTime = 10;
 		this.synchro = null;
 	}
-	
+
 	@Override
-	public void whenSatelitteMoved(SatelitteMoved arg, Balise target) {
-		if (this.synchro != null) return;
+	public void whenSatelitteMoved(SatelliteMoved arg, Balise target) {
+		if (this.synchro != null)
+			return;
 		Satelitte sat = (Satelitte) arg.getSource();
 		int satX = sat.getPosition().x;
 		int tarX = target.getPosition().x;
@@ -34,9 +36,10 @@ public class DeplacementSynchronisation extends DeplacementBalise {
 
 	@Override
 	public void bouge(Balise target) {
-		System.out.println("Lancement deplacement synchro");
-		if (this.synchro == null) return;
+		if (this.synchro == null)
+			return;
 		this.synchroTime--;
+
 		if (synchroTime <= 0) {
 			Satelitte sat = this.synchro;
 			this.synchro = null;
@@ -45,6 +48,6 @@ public class DeplacementSynchronisation extends DeplacementBalise {
 			sat.send(new SynchroEvent(this));
 			target.getManager().baliseSynchroDone(target);
 			target.setDeplacement(next);
-		}		
+		}
 	}
 }
