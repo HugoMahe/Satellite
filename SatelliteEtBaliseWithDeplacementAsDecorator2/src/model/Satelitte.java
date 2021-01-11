@@ -1,5 +1,7 @@
 package model;
 
+import event.SatelitteMoved;
+
 public class Satelitte extends ElementMobile {
 			
 	public Satelitte(int memorySize) {

@@ -1,13 +1,15 @@
-package model;
+package deplacement;
 
 import java.awt.Point;
 
-public class DeplVertical extends DeplacementBalise  {
+import model.ElementMobile;
+
+public class DeplacementVertical extends DeplacementBalise  {
 	Integer min;
 	Integer max;
 	Boolean monte = false;
 
-	public DeplVertical(Integer min, Integer max) {
+	public DeplacementVertical(Integer min, Integer max) {
 		super (null);
 		this.min = min;
 		this.max = max;

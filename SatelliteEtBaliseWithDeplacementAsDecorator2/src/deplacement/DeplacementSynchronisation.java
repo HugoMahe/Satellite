@@ -1,6 +1,11 @@
-package model;
+package deplacement;
 
-public class DeplSynchronisation extends DeplacementBalise {
+import event.SatelitteMoved;
+import event.SynchroEvent;
+import model.Balise;
+import model.Satelitte;
+
+public class DeplacementSynchronisation extends DeplacementBalise {
 	private int synchroTime;
 	private Satelitte synchro;
 	
@@ -8,7 +13,7 @@ public class DeplSynchronisation extends DeplacementBalise {
 		return this.synchro != null;
 	}
 	
-	public DeplSynchronisation(Deplacement next) {
+	public DeplacementSynchronisation(Deplacement next) {
 		super(next);
 		this.synchroTime = 10;
 		this.synchro = null;
@@ -29,6 +34,7 @@ public class DeplSynchronisation extends DeplacementBalise {
 
 	@Override
 	public void bouge(Balise target) {
+		System.out.println("Lancement deplacement synchro");
 		if (this.synchro == null) return;
 		this.synchroTime--;
 		if (synchroTime <= 0) {

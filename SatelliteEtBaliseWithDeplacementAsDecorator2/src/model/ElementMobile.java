@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Point;
 
+import deplacement.Deplacement;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
 
@@ -42,6 +43,7 @@ public class ElementMobile {
 	}
 
 	protected boolean memoryFull() {
+		System.out.println(this.dataSize >= this.memorySize);
 		return (this.dataSize >= this.memorySize);
 	}
 
@@ -80,6 +82,10 @@ public class ElementMobile {
 
 	public void setDeplacement(Deplacement depl) {
 		this.depl = depl;
+	}
+	
+	public Deplacement getDeplacement() {
+		return this.depl;
 	}
 
 	public Manager getManager() {

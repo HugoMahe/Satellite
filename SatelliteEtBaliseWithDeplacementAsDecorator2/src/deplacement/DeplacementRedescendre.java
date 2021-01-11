@@ -1,11 +1,13 @@
-package model;
+package deplacement;
 
 import java.awt.Point;
 
-public class Redescendre extends DeplacementBalise {
+import model.Balise;
+
+public class DeplacementRedescendre extends DeplacementBalise {
 	int profondeur;
 	
-	public Redescendre(Deplacement next, int profondeur) {
+	public DeplacementRedescendre(Deplacement next, int profondeur) {
 		super (next);
 		this.profondeur = profondeur;
 	}

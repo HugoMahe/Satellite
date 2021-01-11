@@ -1,4 +1,6 @@
-package model;
+package modelListener;
+
+import event.SynchroEvent;
 
 public interface SynchroEventListener {
 	public void whenStartSynchro(SynchroEvent arg);

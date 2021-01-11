@@ -1,4 +1,8 @@
-package model;
+package deplacement;
+
+import event.SatelitteMoved;
+import model.Balise;
+import model.ElementMobile;
 
 public class DeplacementBalise extends Deplacement {
 
