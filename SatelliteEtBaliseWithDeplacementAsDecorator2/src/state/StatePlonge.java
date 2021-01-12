@@ -2,12 +2,12 @@ package state;
 
 import model.Balise;
 
-public class StateSync implements StateBalise {
+public class StatePlonge extends StateBalise {
 
 	protected Balise balise;
 	protected int profondeur;
 
-	public StateSync(Balise balise, int profondeur) {
+	public StatePlonge(Balise balise, int profondeur) {
 		this.balise = balise;
 		this.profondeur = profondeur;
 	}

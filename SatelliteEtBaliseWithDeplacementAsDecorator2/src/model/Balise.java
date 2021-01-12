@@ -1,10 +1,5 @@
 package model;
 
-import deplacement.Deplacement;
-import deplacement.balise.DeplBalise;
-import deplacement.balise.DeplRedescendre;
-import deplacement.balise.DeplSynchronisation;
-import deplacement.balise.DeplVersSurface;
 import event.SatelliteMoved;
 import listener.SatelliteMoveListener;
 import state.StateBalise;
@@ -13,6 +8,7 @@ import state.StateCollect;
 public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	protected StateBalise state;
+	private boolean waitForSync = false;
 
 	public Balise(int memorySize) {
 		super(memorySize);
@@ -30,11 +26,7 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 	@Override
 	public void tick() {
 		if (this.memoryFull()) {
-			Deplacement redescendre = new DeplRedescendre(this.deplacement(), this.profondeur());
-			Deplacement deplSynchro = new DeplSynchronisation(redescendre);
-			Deplacement nextDepl = new DeplVersSurface(deplSynchro);
-			this.setDeplacement(nextDepl);
-			this.resetData();
+
 		}
 		super.tick();
 		this.state.handleState();
@@ -42,8 +34,8 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	@Override
 	public void whenSatelitteMoved(SatelliteMoved arg) {
-		DeplBalise dp = (DeplBalise) this.depl;
-		dp.whenSatelitteMoved(arg, this);
+		StateBalise state = this.state;
+		state.whenSatelitteMoved(arg);
 	}
 
 	public void setState(StateBalise state) {
@@ -52,29 +44,20 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 		}
 	}
 
-	@Override
-	public void isPartOfSatelliteRange(Satelitte satellite) {
-		int bX = this.getPosition().x;
-		int sX = satellite.getPosition().x;
+	public void setInSync(boolean status) {
+		this.waitForSync = status;
+	}
 
-		if (sX >= bX - 50 && sX <= bX + 50) {
-			System.out.println(this);
-			System.out.println(satellite);
-//			if (/*Balise est en attente de synchro*/) {
-//				satellite.registerListener(SatelliteMoved.class, this);
-//			}
+	@Override
+	public void checkSatelliteSynchro(Satelitte satellite) {
+		if (waitForSync) {
+			satellite.registerListener(SatelliteMoved.class, this);
 		}
 	}
 
-//	public void baliseReadyForSynchro(Balise b) {
-//		for (Satelitte s : this.sats) {			
-//			s.registerListener(SatelliteMoved.class, b);
-//		}
-//	}
-//	public void baliseSynchroDone(Balise b) {
-//		for (Satelitte s : this.sats) {			
-//			s.unregisterListener(SatelliteMoved.class, b);
-//		}
-//	}
+	@Override
+	public void checkSatelliteSynchroDone(Satelitte satellite) {
+		satellite.unregisterListener(SatelliteMoved.class, this);
+	}
 
 }

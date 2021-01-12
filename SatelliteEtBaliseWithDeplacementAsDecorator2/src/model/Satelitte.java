@@ -15,8 +15,12 @@ public class Satelitte extends ElementMobile {
 	}
 
 	@Override
-	public void isPartOfReceiverRange(ElementMobile other) {
-		other.isPartOfSatelliteRange(this);
+	public void checkReceiverSynchro(ElementMobile other) {
+		other.checkSatelliteSynchro(this);
 	}
 
+	@Override
+	public void checkReceiverSynchroDone(ElementMobile other) {
+		other.checkSatelliteSynchroDone(this);
+	}
 }

@@ -39,12 +39,12 @@ public class ElementMobile {
 
 	}
 
-	public void addData(int number) {
-		this.dataSize += number;
-	}
-
 	public void resetData() {
 		this.dataSize = 0;
+	}
+
+	public void addData(int data) {
+		this.dataSize += data;
 	}
 
 	public boolean memoryFull() {
@@ -96,11 +96,19 @@ public class ElementMobile {
 		return manager;
 	}
 
-	public void isPartOfReceiverRange(ElementMobile other) {
+	public void checkReceiverSynchro(ElementMobile other) {
 
 	}
 
-	public void isPartOfSatelliteRange(Satelitte satelitte) {
+	public void checkSatelliteSynchro(Satelitte satelitte) {
+
+	}
+
+	public void checkReceiverSynchroDone(ElementMobile other) {
+
+	}
+
+	public void checkSatelliteSynchroDone(Satelitte satelitte) {
 
 	}
 

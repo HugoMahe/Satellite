@@ -8,6 +8,7 @@ public class Manager {
 
 	public void addElement(ElementMobile elMob) {
 		this.elMobs.add(elMob);
+		elMob.setManager(this);
 	}
 
 	public void tick() {
@@ -24,10 +25,18 @@ public class Manager {
 		this.elMobs = elMobs;
 	}
 
-	public void controle() {
+	public void checkSynchronisation() {
 		for (ElementMobile elMob : this.getElementsMobiles()) {
 			for (ElementMobile elMob2 : this.getElementsMobiles()) {
-				elMob2.isPartOfReceiverRange(elMob);
+				elMob2.checkReceiverSynchro(elMob);
+			}
+		}
+	}
+
+	public void checkSynchroDone() {
+		for (ElementMobile elMob : this.getElementsMobiles()) {
+			for (ElementMobile elMob2 : this.getElementsMobiles()) {
+				elMob2.checkReceiverSynchroDone(elMob);
 			}
 		}
 	}

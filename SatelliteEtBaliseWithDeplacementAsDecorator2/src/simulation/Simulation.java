@@ -6,6 +6,7 @@ import java.awt.Point;
 
 import deplacement.DeplHorizontal;
 import deplacement.DeplSatellite;
+import deplacement.DeplVertical;
 import deplacement.Deplacement;
 import graphicLayer.GBounded;
 import graphicLayer.GRect;
@@ -17,13 +18,11 @@ import model.Satelitte;
 public class Simulation {
 
 	Manager manager = new Manager();
-//	BaseNavale bn = new BaseNavale();
 	GSpace world = new GSpace("Satellite & Balises", new Dimension(800, 600));
 
 	public void mainLoop() {
 		while (true) {
 			manager.tick();
-			manager.controle();
 
 			try {
 				Thread.sleep(50);
@@ -73,12 +72,11 @@ public class Simulation {
 		this.addSatelitte(sky, 100000, new Point(400, 90), 3);
 		this.addSatelitte(sky, 100000, new Point(500, 140), 4);
 		this.addSatelitte(sky, 100000, new Point(600, 10), 1);
-//		this.addBalise(sea, 300, new Point(400, 200), new DeplHorizontal(50, 750), "balise 1");
-//		this.addBalise(sea, 400, new Point(100, 100), new DeplVertical(50, 200), "balise 2");
-//		this.addBalise(sea, 200, new Point(0, 160), new DeplHorizontal(0, 800), "balise 3");
-//		this.addBalise(sea, 500, new Point(200, 100), new DeplVertical(130, 270), "balise 4");
+		this.addBalise(sea, 300, new Point(400, 200), new DeplHorizontal(50, 750), "balise 1");
+		this.addBalise(sea, 400, new Point(100, 100), new DeplVertical(50, 200), "balise 2");
+		this.addBalise(sea, 200, new Point(0, 160), new DeplHorizontal(0, 800), "balise 3");
+		this.addBalise(sea, 500, new Point(200, 100), new DeplVertical(130, 270), "balise 4");
 		this.addBalise(sea, 50, new Point(300, 100), new DeplHorizontal(200, 600), "balise 5");
-//		bn.setManager(manager);
 		this.world.open();
 		this.mainLoop();
 	}
