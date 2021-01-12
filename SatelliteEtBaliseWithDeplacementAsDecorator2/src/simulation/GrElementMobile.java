@@ -3,13 +3,17 @@ package simulation;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 
 import event.PositionChanged;
 import event.SynchroEvent;
 import graphicLayer.GRect;
+import graphicLayer.GString;
 import listener.PositionChangeListener;
 import listener.SynchroEventListener;
 import model.ElementMobile;
@@ -17,6 +21,8 @@ import model.ElementMobile;
 public class GrElementMobile extends GRect implements PositionChangeListener, SynchroEventListener  {
 	ElementMobile model;
 	Boolean duringSynchro = false;
+	GrDescription description;
+	
 
 	Object getModel() { return this.model; }
 	
@@ -63,6 +69,20 @@ public class GrElementMobile extends GRect implements PositionChangeListener, Sy
 		}
 	}
 
+	public void ajoutDescription(String label, ElementMobile element) {
+		// AJOUT DU LABLE GENERIQUE
+		System.out.println("lancement super");
+		this.description = new GrDescription();
+		this.description.label = new GString(label);
+		this.description.label.setDimension(new Dimension(500, 500));
+		Point p = new Point(12, 60);
+		this.description.label.setPosition(p);
+		this.description.label.setFont(new Font("Arial", 1, 20));
+		this.addElement(this.description.label);
+	}
 	
+	public void refresh() {
+		
+	}
 	
 }

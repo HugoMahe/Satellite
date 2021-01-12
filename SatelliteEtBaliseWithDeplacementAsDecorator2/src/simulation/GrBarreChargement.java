@@ -15,7 +15,10 @@ public class GrBarreChargement extends GElement {
 	public GRect chargementModel;
 	public int maxHauteurBarre = 50;
 	public Balise balise;
-	public GrBarreChargement(Balise bal) {
+	
+	public GrBarreChargement(GrBalise gr) {
+		// TODO Auto-generated constructor stub
+		System.out.println("lancement chargement barre");
 		this.model = new GRect();
 		this.model.setDimension(new Dimension(20, maxHauteurBarre));
 		this.model.setPosition(new Point(this.model.getPosition().x,this.model.getPosition().y+5));
@@ -23,22 +26,23 @@ public class GrBarreChargement extends GElement {
 		this.model.setBorderColor(Color.WHITE);
 		this.chargementModel = new GRect();
 		this.chargementModel.setDimension(new Dimension(18, maxHauteurBarre));
+		this.model.addElement(chargementModel);
 		this.chargementModel.setPosition(new Point(this.model.getPosition().x,this.model.getPosition().y-5));
 		this.chargementModel.setColor(Color.GREEN);
-		this.model.addElement(chargementModel);
-		this.balise = bal;
+		gr.addElement(this.model);
 	}
+	
 	@Override
 	public void draw(Graphics2D g) {
-		System.out.println("lancement du draw barre");
+		
 	}
 	@Override
 	public void translate(Point gap) {
 		// TODO Auto-generated method stub
 		
 	}
-	public void refresh() {
-		float pourcentage = ( (float) this.balise.dataSize() / (float) this.balise.memorySize()) * 100;
+	public void refresh(Balise bal) {
+		float pourcentage = ( (float) bal.dataSize() / (float) bal.memorySize()) * 100;
 	 	float dimension = (pourcentage / 100 ) * 50;
 	 	System.out.println( "Pourcentage fin " + dimension);
 	 	this.chargementModel.setDimension(new Dimension(20, (int)dimension));	

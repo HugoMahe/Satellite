@@ -29,5 +29,4 @@ public class DeplHorizontal extends DeplBalise {
 		}
 		target.setPosition(new Point(x, p.y));
 	}
-
 }
