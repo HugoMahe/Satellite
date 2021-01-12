@@ -25,19 +25,16 @@ public class Manager {
 		this.elMobs = elMobs;
 	}
 
-	public void checkSynchronisation() {
+	public void checkSynchronisation(ElementMobile element) {
 		for (ElementMobile elMob : this.getElementsMobiles()) {
-			for (ElementMobile elMob2 : this.getElementsMobiles()) {
-				elMob2.checkReceiverSynchro(elMob);
-			}
+			elMob.checkReceiverSynchro(element);
 		}
 	}
 
-	public void checkSynchroDone() {
+	public void checkSynchroDone(ElementMobile element) {
+
 		for (ElementMobile elMob : this.getElementsMobiles()) {
-			for (ElementMobile elMob2 : this.getElementsMobiles()) {
-				elMob2.checkReceiverSynchroDone(elMob);
-			}
+			elMob.checkReceiverSynchroDone(element);
 		}
 	}
 }

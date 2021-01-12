@@ -8,7 +8,6 @@ import state.StateCollect;
 public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	protected StateBalise state;
-	private boolean waitForSync = false;
 
 	public Balise(int memorySize) {
 		super(memorySize);
@@ -44,15 +43,9 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 		}
 	}
 
-	public void setInSync(boolean status) {
-		this.waitForSync = status;
-	}
-
 	@Override
 	public void checkSatelliteSynchro(Satelitte satellite) {
-		if (waitForSync) {
-			satellite.registerListener(SatelliteMoved.class, this);
-		}
+		satellite.registerListener(SatelliteMoved.class, this);
 	}
 
 	@Override

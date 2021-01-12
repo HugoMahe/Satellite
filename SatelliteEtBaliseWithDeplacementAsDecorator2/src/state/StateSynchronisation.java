@@ -27,8 +27,7 @@ public class StateSynchronisation extends StateBalise {
 
 	@Override
 	public void handleState() {
-		balise.setInSync(true);
-		balise.getManager().checkSynchronisation();
+		balise.getManager().checkSynchronisation(balise);
 
 		if (this.synchro == null)
 			return;
@@ -40,6 +39,7 @@ public class StateSynchronisation extends StateBalise {
 			this.synchro = null;
 			this.synchroTimeLeft = 10;
 			this.balise.resetData();
+			balise.getManager().checkSynchroDone(balise);
 			balise.send(new SynchroEvent(this));
 			sat.send(new SynchroEvent(this));
 			this.next();
