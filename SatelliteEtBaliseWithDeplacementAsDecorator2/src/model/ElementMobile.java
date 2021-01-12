@@ -39,8 +39,12 @@ public class ElementMobile {
 
 	}
 
-	protected void resetData() {
+	public void resetData() {
 		this.dataSize = 0;
+	}
+
+	public void addData(int data) {
+		this.dataSize += data;
 	}
 
 	public boolean memoryFull() {
@@ -83,13 +87,29 @@ public class ElementMobile {
 	public void setDeplacement(Deplacement depl) {
 		this.depl = depl;
 	}
-	
+
 	public Deplacement getDeplacement() {
 		return this.depl;
 	}
 
 	public Manager getManager() {
 		return manager;
+	}
+
+	public void checkReceiverSynchro(ElementMobile other) {
+
+	}
+
+	public void checkSatelliteSynchro(Satelitte satelitte) {
+
+	}
+
+	public void checkReceiverSynchroDone(ElementMobile other) {
+
+	}
+
+	public void checkSatelliteSynchroDone(Satelitte satelitte) {
+
 	}
 
 }
