@@ -6,7 +6,6 @@ import java.awt.Point;
 import graphicLayer.GElement;
 import graphicLayer.GString;
 import model.Balise;
-import model.ElementMobile;
 import model.Satelitte;
 
 public class GrDescription extends GElement {
@@ -23,7 +22,7 @@ public class GrDescription extends GElement {
 
 	@Override
 	public void translate(Point gap) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
 
 }
