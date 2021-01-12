@@ -7,11 +7,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import graphicLayer.GImage;
 import event.PositionChanged;
+import graphicLayer.GImage;
 
 public class GrBalise extends GrElementMobile {
 	public GrDescription descriptionBalise;
+
 	public GrBalise() {
 		File path = new File("SatelliteEtBaliseWithDeplacementAsDecorator2/balise.png");
 		this.withoutBorder();
@@ -23,13 +24,12 @@ public class GrBalise extends GrElementMobile {
 			e.printStackTrace();
 		}
 		this.addElement(new GImage(rawImage));
-		this.setDimension(new Dimension(rawImage.getWidth()+50, rawImage.getHeight()+50));
+		this.setDimension(new Dimension(rawImage.getWidth() + 50, rawImage.getHeight() + 50));
 	}
-	
+
 	@Override
 	public void whenPositionChanged(PositionChanged arg) {
 		super.whenPositionChanged(arg);
-		System.out.println("ici");
 		descriptionBalise.refresh();
 	}
 

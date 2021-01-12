@@ -1,37 +1,34 @@
 package model;
 
-import java.util.ArrayList;
-import event.SatelliteMoved;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Manager {
-	ArrayList<Satelitte> sats = new ArrayList<Satelitte>();
-	ArrayList<Balise> bals = new ArrayList<Balise>();
-	public void addBalise(Balise bal) {
-		bals.add(bal);
-		bal.setManager(this);
+	Set<ElementMobile> elMobs = new HashSet<>();
+
+	public void addElement(ElementMobile elMob) {
+		this.elMobs.add(elMob);
 	}
-	public void addSatellite(Satelitte sat) {
-		this.sats.add(sat);
-		sat.setManager(this);
-	}
+
 	public void tick() {
-		for (Balise b : this.bals) {
-			b.tick();
-		}
-		for (Satelitte s : this.sats) {
-			s.tick();
-		}
-	}
-	
-	public void baliseReadyForSynchro(Balise b) {
-		for (Satelitte s : this.sats) {			
-			s.registerListener(SatelliteMoved.class, b);
-		}
-	}
-	public void baliseSynchroDone(Balise b) {
-		for (Satelitte s : this.sats) {			
-			s.unregisterListener(SatelliteMoved.class, b);
+		for (ElementMobile elMob : this.elMobs) {
+			elMob.tick();
 		}
 	}
 
+	public Set<ElementMobile> getElementsMobiles() {
+		return elMobs;
+	}
+
+	public void setElementsMobiles(Set<ElementMobile> elMobs) {
+		this.elMobs = elMobs;
+	}
+
+	public void controle() {
+		for (ElementMobile elMob : this.getElementsMobiles()) {
+			for (ElementMobile elMob2 : this.getElementsMobiles()) {
+				elMob2.isPartOfReceiverRange(elMob);
+			}
+		}
+	}
 }

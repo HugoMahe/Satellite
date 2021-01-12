@@ -46,7 +46,6 @@ public class DeplSynchronisation extends DeplBalise {
 			this.synchroTime = 10;
 			target.send(new SynchroEvent(this));
 			sat.send(new SynchroEvent(this));
-			target.getManager().baliseSynchroDone(target);
 			target.setDeplacement(next);
 		}
 	}

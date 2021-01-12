@@ -13,6 +13,7 @@ import state.StateCollect;
 public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	protected StateBalise state;
+
 	public Balise(int memorySize) {
 		super(memorySize);
 		this.setState(new StateCollect(this));
@@ -28,7 +29,6 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 
 	@Override
 	public void tick() {
-		System.out.println(this.dataSize);
 		if (this.memoryFull()) {
 			Deplacement redescendre = new DeplRedescendre(this.deplacement(), this.profondeur());
 			Deplacement deplSynchro = new DeplSynchronisation(redescendre);
@@ -45,11 +45,36 @@ public class Balise extends ElementMobile implements SatelliteMoveListener {
 		DeplBalise dp = (DeplBalise) this.depl;
 		dp.whenSatelitteMoved(arg, this);
 	}
-	
+
 	public void setState(StateBalise state) {
 		if (state != null) {
 			this.state = state;
 		}
 	}
+
+	@Override
+	public void isPartOfSatelliteRange(Satelitte satellite) {
+		int bX = this.getPosition().x;
+		int sX = satellite.getPosition().x;
+
+		if (sX >= bX - 50 && sX <= bX + 50) {
+			System.out.println(this);
+			System.out.println(satellite);
+//			if (/*Balise est en attente de synchro*/) {
+//				satellite.registerListener(SatelliteMoved.class, this);
+//			}
+		}
+	}
+
+//	public void baliseReadyForSynchro(Balise b) {
+//		for (Satelitte s : this.sats) {			
+//			s.registerListener(SatelliteMoved.class, b);
+//		}
+//	}
+//	public void baliseSynchroDone(Balise b) {
+//		for (Satelitte s : this.sats) {			
+//			s.unregisterListener(SatelliteMoved.class, b);
+//		}
+//	}
 
 }

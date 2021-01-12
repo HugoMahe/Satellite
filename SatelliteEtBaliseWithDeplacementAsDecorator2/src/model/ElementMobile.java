@@ -39,7 +39,11 @@ public class ElementMobile {
 
 	}
 
-	protected void resetData() {
+	public void addData(int number) {
+		this.dataSize += number;
+	}
+
+	public void resetData() {
 		this.dataSize = 0;
 	}
 
@@ -83,13 +87,21 @@ public class ElementMobile {
 	public void setDeplacement(Deplacement depl) {
 		this.depl = depl;
 	}
-	
+
 	public Deplacement getDeplacement() {
 		return this.depl;
 	}
 
 	public Manager getManager() {
 		return manager;
+	}
+
+	public void isPartOfReceiverRange(ElementMobile other) {
+
+	}
+
+	public void isPartOfSatelliteRange(Satelitte satelitte) {
+
 	}
 
 }
