@@ -2,6 +2,7 @@ package state;
 
 import deplacement.Deplacement;
 import deplacement.balise.DeplRedescendre;
+import deplacement.balise.DeplStandBy;
 import deplacement.balise.DeplVersSurface;
 import event.SatelliteMoved;
 import event.SynchroEvent;
@@ -59,6 +60,11 @@ public class StateSynchronisation extends StateBalise {
 
 		if (this.synchro == null)
 			return;
+
+		if (this.synchroTimeLeft == this.synchroTime) {
+			this.balise.setDeplacement(new DeplStandBy());
+		}
+
 		this.synchroTimeLeft--;
 		this.balise.addData(Math.round(this.balise.memorySize() / this.synchroTime) * -1);
 	}
