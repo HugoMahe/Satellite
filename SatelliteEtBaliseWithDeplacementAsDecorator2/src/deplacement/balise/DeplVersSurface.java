@@ -2,13 +2,11 @@ package deplacement.balise;
 
 import java.awt.Point;
 
-import deplacement.Deplacement;
 import model.ElementMobile;
 
 public class DeplVersSurface extends DeplBalise {
 
-	public DeplVersSurface(Deplacement next) {
-		super(next);
+	public DeplVersSurface() {
 	}
 
 	@Override
@@ -20,9 +18,6 @@ public class DeplVersSurface extends DeplBalise {
 			if (y < 0)
 				y = 0;
 			target.setPosition(new Point(p.x, y));
-		} else {
-//			target.getManager().baliseReadyForSynchro((Balise) target);
-			target.setDeplacement(this.next);
 		}
 	}
 

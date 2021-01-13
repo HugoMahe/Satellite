@@ -2,14 +2,12 @@ package deplacement.balise;
 
 import java.awt.Point;
 
-import deplacement.Deplacement;
 import model.Balise;
 
 public class DeplRedescendre extends DeplBalise {
 	int profondeur;
 
-	public DeplRedescendre(Deplacement next, int profondeur) {
-		super(next);
+	public DeplRedescendre(int profondeur) {
 		this.profondeur = profondeur;
 	}
 
@@ -22,8 +20,6 @@ public class DeplRedescendre extends DeplBalise {
 			if (y > this.profondeur)
 				y = this.profondeur;
 			target.setPosition(new Point(p.x, y));
-		} else {
-			target.setDeplacement(next);
 		}
 	}
 

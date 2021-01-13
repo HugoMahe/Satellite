@@ -6,12 +6,6 @@ import model.ElementMobile;
 
 public class DeplBalise extends Deplacement {
 
-	protected Deplacement next;
-
-	public DeplBalise(Deplacement next) {
-		this.next = next;
-	}
-
 	public void bouge(Balise target) {
 	}
 

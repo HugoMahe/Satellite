@@ -13,7 +13,6 @@ public class DeplSinusoidal extends DeplBalise {
 	Integer delta = 2;
 
 	public DeplSinusoidal(Integer minHorizontal, Integer maxHorizontal) {
-		super(null);
 		this.minHorizontal = minHorizontal;
 		this.maxHorizontal = maxHorizontal;
 	}
