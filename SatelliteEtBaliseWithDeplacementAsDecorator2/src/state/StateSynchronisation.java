@@ -67,6 +67,8 @@ public class StateSynchronisation extends StateBalise {
 
 		this.synchroTimeLeft--;
 		this.balise.addData(Math.round(this.balise.memorySize() / this.synchroTime) * -1);
+		this.synchro.addData(Math.round(this.balise.memorySize() / this.synchroTime) * 1);
+		System.out.println("LA MEMOIRE :" + this.synchro.dataSize() * this.synchroTime);
 	}
 
 	public void synchroEnd() {

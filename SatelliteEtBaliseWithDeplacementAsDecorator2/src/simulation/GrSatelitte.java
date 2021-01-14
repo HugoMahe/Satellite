@@ -8,12 +8,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import event.PositionChanged;
 import graphicLayer.GImage;
+import model.Balise;
 import model.ElementMobile;
+import model.Satelitte;
 
 public class GrSatelitte extends GrElementMobile {
 
 	public GrDescription descriptionSatellite;
+	Satelitte model;
 
 	public GrSatelitte() {
 		File path = new File("SatelliteEtBaliseWithDeplacementAsDecorator2/satellite.png");
@@ -33,8 +37,22 @@ public class GrSatelitte extends GrElementMobile {
 	@Override
 	public void ajoutDescription(String label, ElementMobile element) {
 		// AJOUT DU LABEL GENERIQUE
+		this.model = (Satelitte) element;
 		super.ajoutDescription(label, element);
-		System.out.println("ajout dans Satellite");
 		this.description.label.setColor(Color.RED);
+		this.description.barre = new GrBarreChargement(this);
+	}
+	
+	@Override
+	public void whenPositionChanged(PositionChanged arg) {
+		super.whenPositionChanged(arg);
+		this.refresh();
+	}
+	
+	@Override
+	public void refresh() {
+		if(this.model!=null) {
+			this.description.barre.refresh(this.model);
+		}
 	}
 }
