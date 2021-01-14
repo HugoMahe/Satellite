@@ -27,21 +27,21 @@ public class Satelitte extends ElementMobile {
 	}
 
 	@Override
+	public void checkReceiverSynchroDone(ElementMobile other) {
+		other.checkSatelliteSynchroDone(this);
+	}
+	
+	@Override
 	public void checkReceiverSynchro(ElementMobile other) {
 		if(this.state instanceof StateCollectSatellite) {
 			other.checkSatelliteSynchro(this);
 		}
 	}
 
-	@Override
-	public void checkReceiverSynchroDone(ElementMobile other) {
-		other.checkSatelliteSynchroDone(this);
-	}
-
 	public void setState(StateSatellite stateParam) {
-		// TODO Auto-generated method stub
 		if (stateParam != null) {
 			this.state = stateParam;
 		}
 	}
+	
 }

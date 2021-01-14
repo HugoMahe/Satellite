@@ -24,7 +24,7 @@ public class StateCollectSatellite extends StateSatellite {
 	@Override
 	public void next() {
 		// TODO Auto-generated method stub
-		this.sat.setState(new StateSynchroBase());
+		this.sat.setState(new StateSynchroBase(this.sat));
 		System.out.println("State synchro base done");
 	}
 

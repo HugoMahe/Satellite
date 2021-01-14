@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Manager {
 	Set<ElementMobile> elMobs = new HashSet<>();
+	BaseNavale base;
 
 	public void addElement(ElementMobile elMob) {
 		this.elMobs.add(elMob);
@@ -15,6 +16,14 @@ public class Manager {
 		for (ElementMobile elMob : this.elMobs) {
 			elMob.tick();
 		}
+	}
+	
+	public void setBaseNavale(BaseNavale baseParam) {
+		this.base=baseParam;
+	}
+	
+	public BaseNavale getBaseNavale() {
+		return this.base;
 	}
 //
 //	public Set<ElementMobile> getElementsMobiles() {
@@ -36,5 +45,10 @@ public class Manager {
 		for (ElementMobile elMob : this.elMobs) {
 			elMob.checkReceiverSynchroDone(element);
 		}
+	}
+
+	
+	public void checkSynchronisationBaseNaval(Satelitte sat) {
+		this.base.checkReceiverSynchro(sat);
 	}
 }

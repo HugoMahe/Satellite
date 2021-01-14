@@ -13,6 +13,7 @@ import graphicLayer.GBounded;
 import graphicLayer.GRect;
 import graphicLayer.GSpace;
 import model.Balise;
+import model.BaseNavale;
 import model.Manager;
 import model.Satelitte;
 
@@ -55,6 +56,14 @@ public class Simulation {
 		sky.addElement(grSat);
 		grSat.ajoutDescription(label, sat);
 	}
+	
+	public void addBaseNavale(GBounded sky, Point startPos) {
+		BaseNavale base = new BaseNavale(startPos);
+		manager.setBaseNavale(base);
+		GrBaseNavale grBase = new GrBaseNavale(base);
+		grBase.setModel(base);
+		sky.addElement(grBase.modelGraphique);
+	}
 
 	public void launch() {
 		GRect sky = new GRect();
@@ -76,6 +85,7 @@ public class Simulation {
 		this.addBalise(sea, 200, new Point(0,160), new DeplSinusoidal(0,800), "balise 3");
 		this.addBalise(sea, 500, new Point(200,100), new DeplSinusoidal(130, 270), "balise 4");
 		this.addBalise(sea, 50, new Point(300,100), new DeplSinusoidal(200, 600), "balise 5");
+		this.addBaseNavale(sky, new Point(30,280));
 		this.world.open();
 		this.mainLoop();
 	}
