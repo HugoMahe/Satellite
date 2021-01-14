@@ -1,15 +1,15 @@
 package stateSatellite;
 
-import deplacement.balise.DeplStandBy;
+import deplacement.DeplStandBy;
+import event.BaseNavaleAProximite;
+import listener.BaseNavaleAProximiteListener;
 import model.BaseNavale;
 import model.Satelitte;
 
-public class StateSynchroBase extends StateSatellite {
+public class StateSynchroBase extends StateSatellite  {
 
 	protected Satelitte sat;
 	private BaseNavale synchro;
-	private int synchroTimeLeft=10;
-	private int synchroTime;
 	
 	public StateSynchroBase(Satelitte satParam) {
 		this.sat=satParam;
@@ -22,27 +22,19 @@ public class StateSynchroBase extends StateSatellite {
 	@Override
 	public void handleState() {
 		// TODO Auto-generated method stub
-		System.out.println("En attente d'une base navale");
 		this.synchro();
-		
-		if(this.synchroTimeLeft <=0) {
-			System.out.println(this.synchroTimeLeft);
-			this.next();
-		}
 	}
 
 	@Override
 	public void next() {
 		// TODO Auto-generated method stub
-		this.synchroTimeLeft=10;
+		this.sat.getManager().checkSynchroDone(sat);
 		this.sat.setState(new StateCollectSatellite(this.sat));
-		System.out.println("Retour en état de collect");
 	}
 	
 	public void synchro() {
 		this.sat.getManager().checkSynchronisation(sat);
-		System.out.println(this.synchro);
-		if(this.synchro==null)
+		/*if(this.synchro==null)
 			return;
 		if(this.synchroTimeLeft == this.synchroTime) {
 			this.sat.setDeplacement(new DeplStandBy());
@@ -50,8 +42,18 @@ public class StateSynchroBase extends StateSatellite {
 		
 		this.synchroTime--;
 		this.sat.addData(Math.round(this.sat.memorySize() / this.synchroTime) * -1);
-		this.synchro.addData(Math.round(this.sat.memorySize() / this.synchroTime) * 1);
+		this.synchro.addData(Math.round(this.sat.memorySize() / this.synchroTime) * 1);*/
 	}
 
+	@Override
+	public void whenBaseNavaleAProximite(BaseNavaleAProximite arg, BaseNavaleAProximiteListener arg2) {
+		BaseNavale bn = (BaseNavale) arg.getSource();
+		System.out.println(this.sat.equals(arg2));
+		if(this.sat.equals(arg2)) {
+			bn.addData(this.sat.dataSize());
+			this.sat.resetData();
+			this.next();
+		}
+	}
 
 }

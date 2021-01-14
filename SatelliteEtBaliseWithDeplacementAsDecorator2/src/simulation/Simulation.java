@@ -59,6 +59,7 @@ public class Simulation {
 	
 	public void addBaseNavale(GBounded sky, Point startPos) {
 		BaseNavale base = new BaseNavale(10000, startPos);
+		manager.addElement(base);
 		GrBaseNavale grBase = new GrBaseNavale(base);
 		grBase.setModel(base);
 		sky.addElement(grBase.modelGraphique);

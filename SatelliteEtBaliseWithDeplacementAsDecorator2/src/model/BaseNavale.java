@@ -2,10 +2,15 @@ package model;
 
 import java.awt.Point;
 
+import deplacement.DeplStandBy;
+import deplacement.Deplacement;
+import event.BaseNavaleAProximite;
+import event.SatelliteMoved;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
+import listener.SatelliteMoveListener;
 
-public class BaseNavale extends ElementMobile {
+public class BaseNavale extends ElementMobile implements SatelliteMoveListener {
 	
 	EventHandler eventHandler;
 	Manager manager;
@@ -18,6 +23,7 @@ public class BaseNavale extends ElementMobile {
 		this.eventHandler = new EventHandler();
 		this.position = p;
 		this.dataCollected = 0;
+		this.depl = new DeplStandBy();
 	}
 	
 	@Override
@@ -52,5 +58,16 @@ public class BaseNavale extends ElementMobile {
 	
 	public void setPosition(Point p) {
 		this.position = p;
+	}
+
+	@Override
+	public void whenSatelitteMoved(SatelliteMoved arg) {
+		Satelitte sat = (Satelitte) arg.getSource();
+		int coorX = sat.getPosition().x;
+		if (coorX > this.getPosition().x -10 &&  coorX < this.getPosition().x +10) {
+			System.out.println("Il est là");
+			eventHandler.send(new BaseNavaleAProximite(this));
+		}
+		
 	}
 }

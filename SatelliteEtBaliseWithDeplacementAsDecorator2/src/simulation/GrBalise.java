@@ -43,7 +43,7 @@ public class GrBalise extends GrElementMobile {
 	public void ajoutDescription(String label, ElementMobile element) {
 		this.model = (Balise) element;
 		super.ajoutDescription(label, element);
-		System.out.println("ajout dans balise");
+		//System.out.println("ajout dans balise");
 		this.description.label.setColor(Color.WHITE);
 		// INSTANCE DU LABEL PROFONDEUR
 		this.description.labelProfondeur = new GString("0");

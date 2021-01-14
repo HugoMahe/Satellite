@@ -40,7 +40,7 @@ public class DeplSinusoidal extends DeplBalise{
 		int y;
 		double f = (100 - 30)/2.0;
 		y = (int) (30 + f + (f * Math.sin(x/25.0)));
-		 System.out.println("POSITION " + ":" + y);
+		// System.out.println("POSITION " + ":" + y);
 		target.setPosition(new Point(x,  (int) y));
 	}	
 

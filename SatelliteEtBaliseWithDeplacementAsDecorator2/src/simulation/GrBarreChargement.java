@@ -20,7 +20,7 @@ public class GrBarreChargement extends GElement {
 	
 	public GrBarreChargement(GrElementMobile gr) {
 		// TODO Auto-generated constructor stub
-		System.out.println("lancement chargement barre");
+		//System.out.println("lancement chargement barre");
 		this.model = new GRect();
 		this.model.setColor(Color.cyan);
 		this.model.setDimension(new Dimension(20, maxHauteurBarre));
@@ -57,7 +57,7 @@ public class GrBarreChargement extends GElement {
 
 	public void refresh(Satelitte sat) {
 		// TODO Auto-generated method stub
-		System.out.println("refresh sat");
+		//System.out.println("refresh sat");
 		float pourcentage = ( (float) sat.dataSize() / (float) sat.memorySize()) * 100;
 	 	float dimension = (pourcentage / 100 ) * 50;
 	 	this.chargementModel.setDimension(new Dimension(20, (int)dimension));	

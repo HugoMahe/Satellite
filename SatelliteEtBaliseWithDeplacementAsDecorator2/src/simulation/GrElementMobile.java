@@ -68,7 +68,6 @@ public class GrElementMobile extends GRect implements PositionChangeListener, Sy
 
 	public void ajoutDescription(String label, ElementMobile element) {
 		// AJOUT DU LABLE GENERIQUE
-		System.out.println("lancement super");
 		this.description = new GrDescription();
 		this.description.label = new GString(label);
 		this.description.label.setDimension(new Dimension(500, 500));

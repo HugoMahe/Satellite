@@ -14,7 +14,6 @@ public class StateCollectSatellite extends StateSatellite {
 	@Override
 	public void handleState() {
 		// TODO Auto-generated method stub
-		System.out.println("VALEUR MEMOIRE "  + this.sat.memoryFull());
 		if(this.sat.memoryFull()) {
 			this.next();
 		}
@@ -25,7 +24,6 @@ public class StateCollectSatellite extends StateSatellite {
 	public void next() {
 		// TODO Auto-generated method stub
 		this.sat.setState(new StateSynchroBase(this.sat));
-		System.out.println("State synchro base done");
 	}
 
 }

@@ -1,8 +1,8 @@
 package state;
 
+import deplacement.DeplStandBy;
 import deplacement.Deplacement;
 import deplacement.balise.DeplRedescendre;
-import deplacement.balise.DeplStandBy;
 import deplacement.balise.DeplVersSurface;
 import event.SatelliteMoved;
 import event.SynchroEvent;
@@ -68,7 +68,6 @@ public class StateSynchronisation extends StateBalise {
 		this.synchroTimeLeft--;
 		this.balise.addData(Math.round(this.balise.memorySize() / this.synchroTime) * -1);
 		this.synchro.addData(Math.round(this.balise.memorySize() / this.synchroTime) * 1);
-		System.out.println("LA MEMOIRE :" + this.synchro.dataSize() * this.synchroTime);
 	}
 
 	public void synchroEnd() {
@@ -95,7 +94,7 @@ public class StateSynchronisation extends StateBalise {
 		Satelitte sat = (Satelitte) arg.getSource();
 		int satX = sat.getPosition().x;
 		int tarX = balise.getPosition().x;
-		if (satX > tarX - 10 && satX < tarX + 10) {
+		if (satX > tarX - 2 && satX < tarX + 2) {
 			this.synchro = sat;
 			balise.send(new SynchroEvent(this));
 			this.synchro.send(new SynchroEvent(this));
