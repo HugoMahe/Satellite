@@ -8,11 +8,11 @@ public class StateSynchroBase extends StateSatellite {
 
 	protected Satelitte sat;
 	private BaseNavale synchro;
-	private int synchroTimeLeft;
+	private int synchroTimeLeft=10;
 	private int synchroTime;
 	
 	public StateSynchroBase(Satelitte satParam) {
-		
+		this.sat=satParam;
 	}
 	
 	public boolean synchroStarted() {
@@ -26,6 +26,7 @@ public class StateSynchroBase extends StateSatellite {
 		this.synchro();
 		
 		if(this.synchroTimeLeft <=0) {
+			System.out.println(this.synchroTimeLeft);
 			this.next();
 		}
 	}
@@ -39,8 +40,8 @@ public class StateSynchroBase extends StateSatellite {
 	}
 	
 	public void synchro() {
-		this.sat.getManager().checkSynchronisationBaseNaval(sat);
-		
+		this.sat.getManager().checkSynchronisation(sat);
+		System.out.println(this.synchro);
 		if(this.synchro==null)
 			return;
 		if(this.synchroTimeLeft == this.synchroTime) {

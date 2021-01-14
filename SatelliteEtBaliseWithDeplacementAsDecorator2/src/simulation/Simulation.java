@@ -58,8 +58,7 @@ public class Simulation {
 	}
 	
 	public void addBaseNavale(GBounded sky, Point startPos) {
-		BaseNavale base = new BaseNavale(startPos);
-		manager.setBaseNavale(base);
+		BaseNavale base = new BaseNavale(10000, startPos);
 		GrBaseNavale grBase = new GrBaseNavale(base);
 		grBase.setModel(base);
 		sky.addElement(grBase.modelGraphique);
@@ -75,11 +74,11 @@ public class Simulation {
 		sea.setPosition(new Point(0, 300));
 		this.world.addElement(sky);
 		this.world.addElement(sea);
-		this.addSatelitte(sky, 400, new Point(10,50), 2, "Sat 1");
-		this.addSatelitte(sky, 400, new Point(100,10), 1, "Sat 2");
-		this.addSatelitte(sky, 400, new Point(400,90), 3, "Sat 3");
-		this.addSatelitte(sky, 400, new Point(500,140), 4, "Sat 4");
-		this.addSatelitte(sky, 400, new Point(600,10), 1, "Sat 5");
+		this.addSatelitte(sky, 150, new Point(10,50), 2, "Sat 1");
+		this.addSatelitte(sky, 150, new Point(100,10), 1, "Sat 2");
+		this.addSatelitte(sky, 150, new Point(400,90), 3, "Sat 3");
+		this.addSatelitte(sky, 150, new Point(500,140), 4, "Sat 4");
+		this.addSatelitte(sky, 150, new Point(600,10), 1, "Sat 5");
 		this.addBalise(sea, 300, new Point(400,200), new DeplHorizontal(50,750), "balise 1");
 		this.addBalise(sea, 400, new Point(100,100), new DeplVertical(50, 200), "balise 2");
 		this.addBalise(sea, 200, new Point(0,160), new DeplSinusoidal(0,800), "balise 3");

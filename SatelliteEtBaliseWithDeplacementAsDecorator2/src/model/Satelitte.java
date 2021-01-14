@@ -33,7 +33,7 @@ public class Satelitte extends ElementMobile {
 	
 	@Override
 	public void checkReceiverSynchro(ElementMobile other) {
-		if(this.state instanceof StateCollectSatellite) {
+		if(!this.memoryFull()) {
 			other.checkSatelliteSynchro(this);
 		}
 	}
@@ -43,5 +43,9 @@ public class Satelitte extends ElementMobile {
 			this.state = stateParam;
 		}
 	}
+	
+	public void checkBaseNavaleSynchro(BaseNavale baseNavale) {
+        baseNavale.registerListener(SatelliteMoved.class, this);
+    }
 	
 }

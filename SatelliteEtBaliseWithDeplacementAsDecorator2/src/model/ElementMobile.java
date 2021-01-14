@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import deplacement.Deplacement;
 import event.PositionChanged;
+import event.SatelliteMoved;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
 
@@ -111,5 +112,8 @@ public class ElementMobile {
 
 	public void checkSatelliteSynchroDone(Satelitte satelitte) {
 
+	}
+	
+	public void checkBaseNavaleSynchro(BaseNavale baseNavale) {
 	}
 }

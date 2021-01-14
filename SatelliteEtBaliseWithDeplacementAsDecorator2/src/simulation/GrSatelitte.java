@@ -36,7 +36,6 @@ public class GrSatelitte extends GrElementMobile {
 
 	@Override
 	public void ajoutDescription(String label, ElementMobile element) {
-		// AJOUT DU LABEL GENERIQUE
 		this.model = (Satelitte) element;
 		super.ajoutDescription(label, element);
 		this.description.label.setColor(Color.RED);

@@ -14,12 +14,14 @@ import graphicLayer.GRect;
 import listener.SynchroBaseEventListener;
 import model.BaseNavale;
 
-public class GrBaseNavale extends GRect implements  SynchroBaseEventListener {
+public class GrBaseNavale extends GrElementMobile {
 
 	BaseNavale model;
 	Boolean duringSynchro = false;
 	GRect modelGraphique;
+	
 	/*
+	 * VERSION AVEC IMAGE
 	public GrBaseNavale() {
 		File path = new File("SatelliteEtBaliseWithDeplacementAsDecorator2/bateau.jpg");
 		this.withoutBorder();
@@ -33,13 +35,13 @@ public class GrBaseNavale extends GRect implements  SynchroBaseEventListener {
 		this.addElement(new GImage(rawImage));
 		this.setDimension(new Dimension(rawImage.getWidth()+50, rawImage.getHeight()+50));
 	}*/
+	
 	public GrBaseNavale(BaseNavale base) {
 		this.model=base;
 		this.modelGraphique = new GRect();
 		this.modelGraphique.setColor(Color.RED);
 		this.modelGraphique.setPosition(this.model.getPosition());
 		this.modelGraphique.setDimension(new Dimension(100, 20));
-		
 	}
 	
 	public void setModel(BaseNavale base) {
@@ -47,17 +49,6 @@ public class GrBaseNavale extends GRect implements  SynchroBaseEventListener {
 		this.setPosition(this.model.getPosition());
 		this.model.registerListener(SynchroBaseEvent.class, this);
 		this.repaint();
-	}
-
-	@Override
-	public void whenStartBaseSynchro(SynchroBaseEvent arg) {
-		this.duringSynchro=true;
-		
-	}
-
-	@Override
-	public void whenStopBaseSynchro(SynchroBaseEvent arg) {
-		this.duringSynchro=false;
 	}
 	
 }

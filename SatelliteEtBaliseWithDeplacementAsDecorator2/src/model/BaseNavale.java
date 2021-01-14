@@ -5,21 +5,24 @@ import java.awt.Point;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
 
-public class BaseNavale {
+public class BaseNavale extends ElementMobile {
 	
 	EventHandler eventHandler;
 	Manager manager;
 	Point position;
 	int dataCollected;
 
-	public BaseNavale(Point p){
+	
+	public BaseNavale(int memorySize, Point p) {
+		super(memorySize);
 		this.eventHandler = new EventHandler();
 		this.position = p;
 		this.dataCollected = 0;
 	}
 	
-	public int getDataCollected() {
-		return this.dataCollected;
+	@Override
+	public void tick() {
+		super.tick();
 	}
 	
 	//enregistrement des listeners
@@ -39,9 +42,8 @@ public class BaseNavale {
 		this.dataCollected += data;
 	}
 
-	public void checkReceiverSynchro(Satelitte sat) {
-		// TODO Auto-generated method stub
-		
+	public void checkReceiverSynchro(ElementMobile other) {
+		other.checkBaseNavaleSynchro(this);
 	}
 
 	public Point getPosition() {
