@@ -36,7 +36,8 @@ public class Simulation {
 		Balise bal = new Balise(memorySize);
 		bal.setPosition(startPos);
 		bal.setDeplacement(depl);
-		manager.addBalise(bal);
+		//manager.addBalise(bal);
+		manager.addElement(bal);
 		GrBalise grbal = new GrBalise();
 		grbal.setModel(bal);
 		sea.addElement(grbal);
@@ -47,7 +48,8 @@ public class Simulation {
 		Satelitte sat = new Satelitte(memorySize);
 		sat.setPosition(startPos);
 		sat.setDeplacement(new DeplSatellite(-10,1000, vitesse));
-		manager.addSatellite(sat);
+		//manager.addSatellite(sat);
+		manager.addElement(sat);
 		GrSatelitte grSat = new GrSatelitte();
 		grSat.setModel(sat);
 		sky.addElement(grSat);

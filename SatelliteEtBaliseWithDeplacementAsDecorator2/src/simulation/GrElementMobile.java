@@ -1,6 +1,5 @@
 package simulation;
 
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,7 +32,6 @@ public class GrElementMobile extends GRect implements PositionChangeListener, Sy
 		this.setPosition(this.model.getPosition());
 		this.repaint();		
 	}
-	
 	@Override
 	public void whenStartSynchro(SynchroEvent arg) {
 		duringSynchro = true;
@@ -84,5 +82,4 @@ public class GrElementMobile extends GRect implements PositionChangeListener, Sy
 	public void refresh() {
 		
 	}
-	
 }

@@ -2,7 +2,7 @@ package state;
 
 import model.Balise;
 
-public class StateCollect implements StateBalise {
+public class StateCollect extends StateBalise {
 
 	protected Balise balise;
 
@@ -20,7 +20,7 @@ public class StateCollect implements StateBalise {
 
 	@Override
 	public void next() {
-		this.balise.setState(new StateSync(this.balise, this.balise.getPosition().y));
+		this.balise.setState(new StateSynchronisation(this.balise, this.balise.getPosition().y));
 	}
 
 }

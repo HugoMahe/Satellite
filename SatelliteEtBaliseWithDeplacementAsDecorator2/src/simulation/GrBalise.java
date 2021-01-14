@@ -10,14 +10,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import event.PositionChanged;
 import graphicLayer.GImage;
 import graphicLayer.GString;
 import model.Balise;
 import model.ElementMobile;
-import event.PositionChanged;
 
 public class GrBalise extends GrElementMobile {
 	Balise model;
+
 	public GrBalise() {
 		File path = new File("SatelliteEtBaliseWithDeplacementAsDecorator2/balise.png");
 		this.withoutBorder();
