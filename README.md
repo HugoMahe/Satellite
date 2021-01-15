@@ -112,15 +112,40 @@ On voit ici qu'on utilise des éléments concret. Ceci pose donc problème au nivea
 
 Afin de pouvoir se reposait sur cette abstraction nous mettons donc en place un Double-Dispatch. Pour ce faire, dans ElementMobile nous définissons 2 méthodes qui sont : 
 
+#### Modification du modèle
+![Diagramme ](./diagramme-classe-double-dispatch.png)
+#### Séquence d'appel de méthode
+*Pour une balise s'abonnant aux déplacements d'un satellite*
+```mermaid
+sequenceDiagram
+ElementMobile(Balise) ->> Manager: checkSynchronisation(element)
+Manager ->> ElementMobile(Satellite): checkReceiverSynchro(element: ElementMobile)
+ElementMobile(Satellite) ->> ElementMobile(Balise): checkSatelliteSynchro(satellite: Satellite)
+Note right of ElementMobile(Satellite): L'appel de la méthode checkReceiverSynchro<br/> se fait pour tous les éléments mobiles enregistré dans le Manager.
+ElementMobile(Balise) ->> ElementMobile(Balise): satellite.registerListener(SatelliteMoved.class, this)
+ElementMobile(Balise) -->> Manager: 
+```
+
+*Si l'élément secondaire analysé était du type Balise (liaison Balise-Balise)* 
+```mermaid
+sequenceDiagram
+ElementMobile(Balise) ->> Manager: checkSynchronisation(element)
+Manager ->> ElementMobile(Balise2): checkReceiverSynchro(element: ElementMobile)
+ElementMobile(Balise2) -->> Manager: 
+```
+
+Comme on peut le voir dans le diagramme ci-dessus le double dispatch n'a aucun impact sur les liaisons qui n'ont pas lieu d'être. En effet la balise n'étant pas un receveur possible, sa méthode `checkReceiverSynchro` n'est pas surchargé et n'a donc aucun effet sur le programme (méthode vide)
+
+#### Explications textuelles
 ```java
 	public void checkReceiverSynchro(ElementMobile other) {}
 
 	public void checkSatelliteSynchro(Satelitte satelitte) {}
 ```
 
-Ici checkReceiverSynchro sera la méthode non déterministe. Ainsi quand on l'appelle on aura aucune idée de l'élément concret  qui sera utilisé pour appelé la méthode. De plus nous aurons aucun moyen de savoir le type concret du paramètre other. 
+Ici `checkReceiverSynchro` sera la méthode non déterministe. Ainsi quand on l'appelle on aura aucune idée de l'élément concret  qui sera utilisé pour appelé la méthode. De plus nous aurons aucun moyen de savoir le type concret du paramètre other. 
 
-Nous avons donc 2 inconnues. Pour déterminer une des 2 nous allons pouvoir surcharger la méthode checkReceiverSynchro dans Satellite. Ainsi dans le code sur la méthode surchargé nous saurons que le `this` correspond à une instance de Satellite. 
+Nous avons donc 2 inconnues. Pour déterminer une des 2 nous allons pouvoir surcharger la méthode `checkReceiverSynchro` dans Satellite. Ainsi dans le code sur la méthode surchargé nous saurons que le `this` correspond à une instance de Satellite. 
 
 Dans le code de cette surcharge nous appellerons donc la méthode `checkSatelliteSynchro`  en passant this en paramètre.
 
@@ -137,3 +162,6 @@ public void checkSynchronisation(ElementMobile element) {
 	}
 }
 ```
+Comme on peut le voir le paramètre est abstrait et le type de la liste parcourue également.
+
+A noter que pour `unregister` un listener, nous avons utilisé exactement le même mécanisme mais avec des méthodes ayant pour suffixe : `SynchroDone`
